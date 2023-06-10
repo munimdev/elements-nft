@@ -1,5 +1,5 @@
 import './App.css';
-// import Header from './components/Header';
+import NavBar from './components/NavBar';
 // import Footer from './components/Footer';
 import { Routes, Route, useNavigate } from "react-router-dom";
 
@@ -11,14 +11,14 @@ import Mint from './Pages/Mint';
 function App() {
   return (
     <div className="App">
+      <NavBar />
       <Routes>
-        {/* <Header /> */}
         <Route path="/" element={<Landing />} />
         <Route path="/user" element={<User />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/mint" element={<Mint />} />
-        {/* <Footer /> */}
       </Routes>
+      {/* <Footer /> */}
     </div>
   );
 }
