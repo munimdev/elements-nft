@@ -1,0 +1,15 @@
+{
+  "name": "Water",
+  "description": "Elements NFT is unique collection of 4444 pcs NFT bonus cards with 4 elements as a basic components of this world.",
+  "image": "https://gateway.pinata.cloud/ipfs/QmUEEKwtPgGcqLCpQAU9TxBdNKdwuGGnGnpJbrKiVQVFFF/Water.mp4",
+  "dna": "8ce9e69b37308f9a02e8ceec51c84d2720ac70ff",
+  "edition": 2,
+  "date": 1681107163299,
+  "attributes": [
+    {
+      "trait_type": "Element Type",
+      "value": "Water"
+    }
+  ],
+  "compiler": "Elements NFT"
+}

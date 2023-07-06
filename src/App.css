@@ -21,18 +21,28 @@
   --column-flex: 735;
   background: var(--bg-gradient), var(--bg-overlay-color);
   overflow: hidden;
+  padding-right: 5% !important;
 }
 
 .nav-item-secondary {
-  letter-spacing: 0.35 rem; 
+  letter-spacing: 0.2em; 
   font-size: 16px;
   margin-left: 8px;
   margin-right: 8px;
 }
 
+.logo {
+  letter-spacing: 0.35em;
+  font-size: larger;
+}
+
 .content {
   background-color: #2b2a2a;
   color: white;
+}
+
+.mint-slide {
+  background-size: cover;
 }
 
 .b-top {
@@ -51,7 +61,22 @@
 }
 
 .b-left-big {
-  border-left: 1px solid rgba(213,212,212,1);
+  border-left: 1px solid rgba(129,127,127,1);
+}
+
+.b-bottom {
+  margin-top: 30px;
+}
+
+.b-bottom::before {
+  content: "";
+  display: block;
+  width: 20%;
+  height: 1px;
+  border-top: 1px solid rgba(213,212,212,1);
+  position: relative;
+  left: 40%;
+  /* background-color: rgba(213,212,212,1); */
 }
 
 .b-left-big::before {
@@ -69,14 +94,215 @@
 .b-left-small::after {
   content: "";
   display: block;
-  width: 25%;
+  width: 37.5%;
   height: 3px;
   border-top: 3px solid rgba(213,212,212,1);
-  border-left: 1px solid rgba(213,212,212,1);
   transform: rotate(-90deg);
   position: relative;
-  left: -15%;
+  left: -34%;
   top: -65%;
+}
+
+.why-left-small::after {
+  content: "";
+  display: block;
+  width: 37.5%;
+  height: 3px;
+  border-top: 3px solid rgba(213,212,212,1);
+  transform: rotate(-90deg);
+  position: relative;
+  left: -36.5%;
+  top: -80%;
+}
+
+.why-this-wrapper {
+  border-radius: 20px;
+}
+
+.why-this {
+  box-sizing: border-box;
+  border-left: 1px solid rgba(213,212,212,1);
+  /* padding-left: 40px; */
+}
+
+.middle-img {
+  /* box-shadow: var(--shd,0 1px 4px rgba(0,0,0,.6)); */
+  box-shadow: -12.61px 9.85px 5px 0px rgba(0,0,0,0.53);
+}
+
+.slider {
+	position: relative;
+	width: 100%;
+	height: 421px;
+	overflow: hidden
+}
+
+.slider a.previousButton, .slider a.nextButton {
+	font-size: 22px;
+	line-height: 0;
+	display: block;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	        transform: translateY(-50%);
+	-webkit-transition: all .3s linear;
+	transition: all .3s linear;
+	z-index: 1;
+	color: #333;
+	padding: 10px;
+	text-decoration: none;
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden
+	/* prevent jump effect when scaling */
+}
+
+.slider a.previousButton:not(.disabled):hover, .slider a.nextButton:not(.disabled):hover {
+	-webkit-transform: translateY(-50%) scale(1.25);
+	        transform: translateY(-50%) scale(1.25);
+	cursor: pointer;
+}
+
+.slider a.previousButton {
+	left: 20px;
+}
+
+.slider a.nextButton {
+	right: 20px;
+}
+
+.slider a.nextButton svg polygon, .slider a.previousButton svg polygon {
+  fill: white;
+}
+
+.slide {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	overflow: hidden
+}
+
+.slide.hidden {
+	visibility: hidden;
+}
+
+.slide.previous {
+	left: -100%;
+}
+
+.slide.current {
+	left: 0;
+}
+
+.slide.next {
+	left: 100%;
+}
+
+.slide.animateIn,
+	.slide.animateOut {
+	-webkit-transition: all 2s ease;
+	transition: all 2s ease;
+}
+
+.slide.animateIn.previous,
+		.slide.animateIn.next {
+	left: 0;
+	visibility: visible;
+}
+
+.slide.animateOut.previous {
+	left: 100%;
+}
+
+.slide.animateOut.next {
+	left: -100%;
+}
+
+.mint-element.air {
+  text-shadow: 0 0 5px #fff;
+}
+
+.mint-element.fire {
+  text-shadow: 0 0 15px #f00;
+}
+
+.mint-element.water {
+  text-shadow: 0 0 15px #00f;
+}
+
+.mint-element.earth {
+  text-shadow: 0 0 15px #0f0;
+}
+
+.box__1 > h3 {
+  font-weight: 800;
+}
+.box__1 > p {
+  margin-top: -10px !important;
+  color: black;
+}
+
+.mint__btn {
+  background-color: white;
+  border: none;
+  color: black;
+  border-radius: 7px;
+  padding: 10px 27px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mint__btn:hover {
+  box-shadow: 0px 0px 20px 1px rgb(255, 255, 255);
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.input__div {
+  display: flex;
+  justify-content: space-between;
+  width: min-content;
+  padding: 0px 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  background: transparent;
+  box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+}
+
+.input__div > .plus {
+  width: 15px;
+  border-radius: 8px;
+  border: none;
+  padding: 8px;
+  font-size: 20px;
+  background: transparent;
+}
+
+.input__div > .minus {
+  width: 15px;
+  border-radius: 8px;
+  border: none;
+  padding: 8px;
+  font-size: 30px;
+  background: transparent;
+}
+
+.input__div > input {
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  background: transparent;
+  color: white;
+  font-size: 20px;
+}
+
+.price-text {
+  display: inline-block;
 }
 
 .App {

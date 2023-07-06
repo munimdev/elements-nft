@@ -8,10 +8,14 @@
 # testing
 /coverage
 
+# env
+/.env
+
 # production
 /build
 
 /src/contracts
+*.rar
 
 # misc
 .DS_Store

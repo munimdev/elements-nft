@@ -25,10 +25,14 @@ body {
     sans-serif; */
   background-color: black;
   color: white;
-  font-family: 'Antares', fallback, sans-serif;
   font-weight: 700;
+  font-family: 'Antares', fallback, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.antares {
+  font-family: 'Antares', fallback, sans-serif;
 }
 
 code {
