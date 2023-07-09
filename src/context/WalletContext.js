@@ -11,9 +11,7 @@ import Web3 from "web3";
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider"; // deprecated
 // import { EthereumProvider } from "@walletconnect/ethereum-provider";
-import { NFTAddress, NFTABI } from "../config";
-
-const activeChain = 5;
+import { NFTAddress, NFTABI, activeChain } from "../config";
 
 const WalletContext = ({ children }) => {
   const INFURA_ID = process.env.REACT_APP_INFURA_ID;

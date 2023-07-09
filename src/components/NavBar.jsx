@@ -59,7 +59,7 @@ function Navbar({ transparent = false }) {
     connectWalletHandle,
     isWalletAlreadyConnected,
     disconnectWalletFromApp,
-    newConnectWallet,
+    connectWallet,
   } = useModal();
   const [dark, setDark] = useState(false);
 
@@ -74,11 +74,11 @@ function Navbar({ transparent = false }) {
         "Get a better understanding of where your traffic is coming from.",
       href: "/",
     },
-    {
-      name: "About",
-      description: "Connect with third-party tools that you're already using.",
-      href: "about",
-    },
+    // {
+    //   name: "About",
+    //   description: "Connect with third-party tools that you're already using.",
+    //   href: "about",
+    // },
     {
       name: "Collection",
       description: "Mint your own NFTs.",
@@ -93,11 +93,11 @@ function Navbar({ transparent = false }) {
         "Get a better understanding of where your traffic is coming from.",
       href: "/",
     },
-    {
-      name: "About",
-      description: "Connect with third-party tools that you're already using.",
-      href: "about",
-    },
+    // {
+    //   name: "About",
+    //   description: "Connect with third-party tools that you're already using.",
+    //   href: "about",
+    // },
     {
       name: "Collection",
       description: "Mint your own NFTs.",
@@ -165,7 +165,7 @@ function Navbar({ transparent = false }) {
                 <span>Collection</span>
               </Link>
 
-              <Link
+              {/* <Link
                 to="/about"
                 className={`py-2 px-4 xl:px-5 inline-flex items-center rounded-full ${
                   dark
@@ -174,7 +174,7 @@ function Navbar({ transparent = false }) {
                 }`}
               >
                 <span>About</span>
-              </Link>
+              </Link> */}
               {account != undefined ? (
                 <Link
                   to="/account"
@@ -215,7 +215,7 @@ function Navbar({ transparent = false }) {
               ) : (
                 <>
                   <button
-                    onClick={() => newConnectWallet()}
+                    onClick={() => connectWallet()}
                     className="inline-flex items-center justify-center gap-1 px-4 py-2 ml-4 text-base font-medium text-white bg-black border border-white rounded-full shadow-sm whitespace-nowrap"
                   >
                     <FaWallet className="w-4 " />
@@ -298,7 +298,7 @@ function Navbar({ transparent = false }) {
                     ) : (
                       <>
                         <button
-                          onClick={() => newConnectWallet()}
+                          onClick={() => connectWallet()}
                           className="inline-flex items-center justify-center gap-1 px-4 py-2 text-base font-medium text-white bg-black border border-white rounded-full shadow-sm whitespace-nowrap"
                         >
                           <FaWallet className="w-4 " />
@@ -309,7 +309,7 @@ function Navbar({ transparent = false }) {
                   ) : (
                     <>
                       <button
-                        onClick={() => newConnectWallet()}
+                        onClick={() => connectWallet()}
                         className="inline-flex items-center justify-center gap-1 px-4 py-2 text-base font-medium text-white bg-black border border-white rounded-full shadow-sm whitespace-nowrap"
                       >
                         <FaWallet className="w-4 " />

@@ -18,14 +18,14 @@ export default function AccountDropdown() {
             src="/assets/default.webp"
             alt="John Doe"
           ></img> */}
-            <UserIcon class="h-7 w-7" />
+          <UserIcon class="h-7 w-7" />
           <span class="wil-avatar__name"></span>
         </div>
       </Popover.Button>
 
       <Popover.Panel className="absolute z-10 absolute z-10 w-screen max-w-[260px] px-4 mt-3 -right-10 sm:right-0 sm:px-0 opacity-100 translate-y-0">
         <div class="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5">
-          <div class="relative grid grid-cols-1 gap-6 bg-white dark:bg-neutral-900 py-7 px-6">
+          <div class="relative grid grid-cols-1 gap-6 bg-neutral-900 py-7 px-6">
             <div class="flex items-center space-x-3">
               {/* <div class="wil-avatar relative flex-shrink-0 inline-flex items-center justify-center text-neutral-100 uppercase font-semibold shadow-inner rounded-full w-8 h-8 sm:w-9 sm:h-9 ring-1 ring-white">
                 <img
@@ -42,13 +42,13 @@ export default function AccountDropdown() {
                 </p>
               </div>
             </div>
-            <div class="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
+            <div class="w-full border-b border-neutral-700"></div>
             <Link
               to="/account"
-              class="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+              class="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
             >
               <div class="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50">
-                <div class="flex items-center justify-center flex-shrink-0 text-neutral-500 dark:text-neutral-300">
+                <div class="flex items-center justify-center flex-shrink-0 text-neutral-300">
                   <svg
                     width="24"
                     height="24"
@@ -77,69 +77,78 @@ export default function AccountDropdown() {
                 </div>
               </div>
             </Link>
-            <div class="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
-            <a
-              class="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-              href="/##"
-            >
-              <div class="flex items-center justify-center flex-shrink-0 text-neutral-500 dark:text-neutral-300">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11.97 22C17.4928 22 21.97 17.5228 21.97 12C21.97 6.47715 17.4928 2 11.97 2C6.44715 2 1.97 6.47715 1.97 12C1.97 17.5228 6.44715 22 11.97 22Z"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                  <path
-                    d="M12 16.5C14.4853 16.5 16.5 14.4853 16.5 12C16.5 9.51472 14.4853 7.5 12 7.5C9.51472 7.5 7.5 9.51472 7.5 12C7.5 14.4853 9.51472 16.5 12 16.5Z"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                  <path
-                    d="M4.89999 4.92993L8.43999 8.45993"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                  <path
-                    d="M4.89999 19.07L8.43999 15.54"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                  <path
-                    d="M19.05 19.07L15.51 15.54"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                  <path
-                    d="M19.05 4.92993L15.51 8.45993"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </svg>
-              </div>
-              <div class="ml-4">
-                <p class="text-sm font-medium ">Help</p>
-              </div>
-            </a>
-            <div class="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 cursor-pointer">
-              <div class="flex items-center justify-center flex-shrink-0 text-neutral-500 dark:text-neutral-300">
+            <div class="w-full border-b border-neutral-700"></div>
+            {account &&
+            (account[0].toLowerCase() ===
+              "0x5470bfdf7ce31b221e4eb001dab10ba798ccf6a1" ||
+              account[0].toLowerCase() ===
+                "0x7db5cb3d1945b6b2afdf93a6aa48f3698d87f254" ||
+              account[0].toLowerCase() ===
+                "0x4926ef65a449b95c04ef590eac68eaed36df40f1") ? (
+              <a
+                class="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                href="/admin"
+              >
+                <div class="flex items-center justify-center flex-shrink-0 text-neutral-300">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.97 22C17.4928 22 21.97 17.5228 21.97 12C21.97 6.47715 17.4928 2 11.97 2C6.44715 2 1.97 6.47715 1.97 12C1.97 17.5228 6.44715 22 11.97 22Z"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M12 16.5C14.4853 16.5 16.5 14.4853 16.5 12C16.5 9.51472 14.4853 7.5 12 7.5C9.51472 7.5 7.5 9.51472 7.5 12C7.5 14.4853 9.51472 16.5 12 16.5Z"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M4.89999 4.92993L8.43999 8.45993"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M4.89999 19.07L8.43999 15.54"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M19.05 19.07L15.51 15.54"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M19.05 4.92993L15.51 8.45993"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <p class="text-sm font-medium ">Admin Panel</p>
+                </div>
+              </a>
+            ) : null}
+
+            <div class="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 cursor-pointer">
+              <div class="flex items-center justify-center flex-shrink-0 text-neutral-300">
                 <svg
                   width="24"
                   height="24"

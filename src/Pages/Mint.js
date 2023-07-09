@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  readOnlyContract,
+  oracleContract,
+  activeChain,
+  chainNames,
+} from "../config";
+import { useModal } from "../context/ModalContext";
+import { toast } from "react-toastify";
 import Slider from "react-animated-slider";
 
 const images = [
@@ -11,33 +19,48 @@ const images = [
   },
   {
     id: 2,
-    title: "Fire",
-    image: "fire-middle.png",
-    // image: "fire-nft-card.jpg",
-  },
-  {
-    id: 3,
     title: "Water",
     image: "water-middle.png",
     // image: "water-nft-card.jpg",
   },
   {
-    id: 4,
+    id: 3,
     title: "Earth",
     image: "earth-middle.png",
     // image: "earth-nft-card.jpg",
   },
+  {
+    id: 4,
+    title: "Fire",
+    image: "fire-middle.png",
+    // image: "fire-nft-card.jpg",
+  },
 ];
 
 function Mint() {
+  const { account, web3api, NFTContract } = useModal();
+
   const [slideUpdate, setSlideUpdate] = useState(false);
   const slideIndex = useRef(1);
   const [count, setCount] = useState(1);
   const mintCost = useRef(444);
 
+  useEffect(() => {
+    readOnlyContract.methods
+      .PRICE_PER_NFT()
+      .call()
+      .then((result) => {
+        mintCost.current = result;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const handleSlideChange = (event) => {
     slideIndex.current = event.slideIndex + 1;
-    setSlideUpdate(!slideUpdate);
+    console.log(slideIndex.current);
+    // setSlideUpdate(!slideUpdate);
   };
 
   const increment = () => {
@@ -52,8 +75,90 @@ function Mint() {
     }
   };
 
-  const mintNFT = () => {
-    console.log("minting");
+  const mintNFT = async () => {
+    try {
+      if (!account) {
+        toast.error("Please connect your wallet first to mint NFTs");
+        return;
+      }
+
+      if ((await web3api.eth.getChainId()) !== activeChain) {
+        toast.error(
+          `Please switch to ${chainNames[activeChain]} network to mint NFT`
+        );
+        try {
+          await web3api.currentProvider
+            .request({
+              method: "wallet_switchEthereumChain",
+              params: [{ chainId: `0x${activeChain}` }],
+            })
+            .then((result) => {
+              toast.info("Network changed successfully. You can mint now.");
+            })
+            .catch((error) => {
+              if (error.code === -32002) return;
+            });
+        } catch (switchError) {
+          if (switchError.code === -32002) return;
+        }
+
+        return;
+      }
+
+      const loadingToast = toast.loading("Minting in progress...");
+
+      toast.info(`Minting ${images[slideIndex.current - 1].title}`);
+
+      // console.log("slideIndex.current", slideIndex.current);
+
+      const ethPrice = await oracleContract.methods
+        .latestAnswer()
+        .call()
+        .catch((error) => {
+          error.message =
+            "There was an error minting your NFT. Please try again.";
+          toast.dismiss(loadingToast);
+          toast.error(error.message);
+        });
+      console.log("ethPrice", ethPrice);
+      const mintPriceInWei =
+        ((mintCost.current + 0.1) * count * 10 ** 26) / parseInt(ethPrice);
+
+      const gasAmount = await NFTContract.methods
+        .mint(slideIndex.current, count)
+        .estimateGas({
+          from: account[0],
+          value: mintPriceInWei,
+        })
+        .catch((error) => {
+          error.message =
+            "There was an error minting your NFT. Please try again.";
+          toast.dismiss(loadingToast);
+          toast.error(error.message);
+        });
+      const gasPrice = await web3api.eth.getGasPrice();
+
+      await NFTContract.methods
+        .mint(slideIndex.current, count)
+        .send({
+          from: account[0],
+          gas: Math.floor(gasAmount * 1.1),
+          gasPrice: Math.floor(gasPrice * 1.1),
+          value: mintPriceInWei,
+        })
+        .on("receipt", (receipt) => {
+          toast.dismiss(loadingToast);
+          toast.success("NFT minted successfully");
+        })
+        .on("error", (error) => {
+          error.message =
+            "There was an error minting your NFT. Please try again.";
+          toast.dismiss(loadingToast);
+          toast.error(error.message);
+        });
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   return (
@@ -63,7 +168,7 @@ function Mint() {
           <video autoPlay loop muted src="/assets/mint-video.mp4" />
         </div>
       </div> */}
-      <div className="w-3/4 mx-auto lg:w-1/2 mint-right container">
+      <div className="container w-3/4 mx-auto lg:w-1/2 mint-right">
         <h1 className="mb-5 text-2xl mint-header">
           Mint an <span className={`mint-element `}>Elements</span> NFT
         </h1>
@@ -116,7 +221,7 @@ function Mint() {
           Mint Now
         </button>
       </div>
-      <svg id="svg_comp-ld62gke7" class="gSXewE hidden">
+      <svg id="svg_comp-ld62gke7" className="hidden gSXewE">
         <defs>
           <filter id="gotham" color-interpolation-filters="sRGB">
             <feComponentTransfer result="srcRGB" />
