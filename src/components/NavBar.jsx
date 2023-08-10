@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 import { Fragment } from "react";
-import { Popover, Transition, Menu } from "@headlessui/react";
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartBarIcon,
-  CursorArrowRaysIcon,
-  ShieldCheckIcon,
-  Squares2X2Icon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import { FaSignInAlt, FaWallet } from "react-icons/fa";
+import { Popover, Transition } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { FaWallet } from "react-icons/fa";
 import { useModal } from "../context/ModalContext";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
 import AccountDropdown from "./AccountDropdown";
 
 const instagramIcon = (
@@ -54,13 +45,7 @@ const twitterIcon = (
 );
 
 function Navbar({ transparent = false }) {
-  const {
-    account,
-    connectWalletHandle,
-    isWalletAlreadyConnected,
-    disconnectWalletFromApp,
-    connectWallet,
-  } = useModal();
+  const { account, disconnectWalletFromApp, connectWallet } = useModal();
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
@@ -74,11 +59,11 @@ function Navbar({ transparent = false }) {
         "Get a better understanding of where your traffic is coming from.",
       href: "/",
     },
-    // {
-    //   name: "About",
-    //   description: "Connect with third-party tools that you're already using.",
-    //   href: "about",
-    // },
+    {
+      name: "info",
+      description: "Connect with third-party tools that you're already using.",
+      href: "info",
+    },
     {
       name: "Collection",
       description: "Mint your own NFTs.",
@@ -93,11 +78,11 @@ function Navbar({ transparent = false }) {
         "Get a better understanding of where your traffic is coming from.",
       href: "/",
     },
-    // {
-    //   name: "About",
-    //   description: "Connect with third-party tools that you're already using.",
-    //   href: "about",
-    // },
+    {
+      name: "Info",
+      description: "Connect with third-party tools that you're already using.",
+      href: "info",
+    },
     {
       name: "Collection",
       description: "Mint your own NFTs.",
@@ -165,16 +150,16 @@ function Navbar({ transparent = false }) {
                 <span>Collection</span>
               </Link>
 
-              {/* <Link
-                to="/about"
+              <Link
+                to="/info"
                 className={`py-2 px-4 xl:px-5 inline-flex items-center rounded-full ${
                   dark
                     ? "text-black hover:bg-neutral-100"
                     : "text-white hover:text-black  hover:bg-neutral-100"
                 }`}
               >
-                <span>About</span>
-              </Link> */}
+                <span>Info</span>
+              </Link>
               {account != undefined ? (
                 <Link
                   to="/account"

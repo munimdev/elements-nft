@@ -15,24 +15,28 @@ const images = [
     id: 1,
     title: "Air",
     image: "air-middle.png",
+    an: true,
     // image: "air-nft-card.jpg",
   },
   {
     id: 2,
     title: "Water",
     image: "water-middle.png",
+    an: false,
     // image: "water-nft-card.jpg",
   },
   {
     id: 3,
     title: "Earth",
     image: "earth-middle.png",
+    an: true,
     // image: "earth-nft-card.jpg",
   },
   {
     id: 4,
     title: "Fire",
     image: "fire-middle.png",
+    an: false,
     // image: "fire-nft-card.jpg",
   },
 ];
@@ -43,14 +47,14 @@ function Mint() {
   const [slideUpdate, setSlideUpdate] = useState(false);
   const slideIndex = useRef(1);
   const [count, setCount] = useState(1);
-  const mintCost = useRef(444);
+  const [mintCost, setMintCost] = useState(444);
 
   useEffect(() => {
     readOnlyContract.methods
       .PRICE_PER_NFT()
       .call()
       .then((result) => {
-        mintCost.current = result;
+        setMintCost(parseInt(result));
       })
       .catch((error) => {
         console.log(error);
@@ -60,7 +64,7 @@ function Mint() {
   const handleSlideChange = (event) => {
     slideIndex.current = event.slideIndex + 1;
     console.log(slideIndex.current);
-    // setSlideUpdate(!slideUpdate);
+    setSlideUpdate(!slideUpdate);
   };
 
   const increment = () => {
@@ -107,7 +111,7 @@ function Mint() {
 
       const loadingToast = toast.loading("Minting in progress...");
 
-      toast.info(`Minting ${images[slideIndex.current - 1].title}`);
+      // toast.info(`Minting ${images[slideIndex.current - 1].title}`);
 
       // console.log("slideIndex.current", slideIndex.current);
 
@@ -117,13 +121,18 @@ function Mint() {
         .catch((error) => {
           error.message =
             "There was an error minting your NFT. Please try again.";
-          toast.dismiss(loadingToast);
+          toast.dismiss();
           toast.error(error.message);
         });
       console.log("ethPrice", ethPrice);
-      const mintPriceInWei =
-        ((mintCost.current + 0.1) * count * 10 ** 26) / parseInt(ethPrice);
-
+      const mintPriceInWei = Math.ceil(
+        (mintCost + 0.1) * count * (10 ** 26 / parseInt(ethPrice))
+      );
+      console.log("mintCost", mintCost);
+      console.log(mintCost + 0.1);
+      console.log("count", count);
+      console.log(count * 10 ** 26);
+      console.log("mintPriceInWei", mintPriceInWei);
       const gasAmount = await NFTContract.methods
         .mint(slideIndex.current, count)
         .estimateGas({
@@ -133,7 +142,7 @@ function Mint() {
         .catch((error) => {
           error.message =
             "There was an error minting your NFT. Please try again.";
-          toast.dismiss(loadingToast);
+          toast.dismiss();
           toast.error(error.message);
         });
       const gasPrice = await web3api.eth.getGasPrice();
@@ -147,16 +156,17 @@ function Mint() {
           value: mintPriceInWei,
         })
         .on("receipt", (receipt) => {
-          toast.dismiss(loadingToast);
+          toast.dismiss();
           toast.success("NFT minted successfully");
         })
         .on("error", (error) => {
           error.message =
             "There was an error minting your NFT. Please try again.";
-          toast.dismiss(loadingToast);
+          toast.dismiss();
           toast.error(error.message);
         });
     } catch (err) {
+      toast.dismiss();
       console.error(err.message);
     }
   };
@@ -170,22 +180,27 @@ function Mint() {
       </div> */}
       <div className="container w-3/4 mx-auto lg:w-1/2 mint-right">
         <h1 className="mb-5 text-2xl mint-header">
-          Mint an <span className={`mint-element `}>Elements</span> NFT
+          Mint {images[slideIndex.current - 1].an ? "an" : "a"}{" "}
+          <span className={`mint-element `}>{`${
+            images[slideIndex.current - 1].title
+          }`}</span>{" "}
+          Element NFT
         </h1>
         <Slider onSlideChange={handleSlideChange}>
           {images.map((item, index) => (
             <div
               key={index}
-              className="mint-slide"
+              className="mint-slide flex justify-center"
               style={{
-                background: `url('assets/${item.image}') no-repeat center center`,
+                // background: `url('assets/${item.image}') no-repeat center center`,
                 filter: "url(#gotham)",
               }}
             >
-              {/* <img 
+              <img
+                className="border border-white"
                 src={`/assets/${item.image}`}
                 alt="nft"
-              /> */}
+              />
 
               {/* <div className="center">
                 <h1>{item.title}</h1>
@@ -198,7 +213,7 @@ function Mint() {
       </div>
       <div className="gap-5 mt-6 mb-10">
         <p className="m-0 price-text">
-          The price of <span id="price">{mintCost.current * count}</span> USD
+          The price of <span id="price">{mintCost * count}</span> USD
         </p>
         <div className="mx-auto mt-3 input__div">
           <button onClick={decrement} className="minus">

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { readOnlyContract } from "../config";
 import { useModal } from "../context/ModalContext";
 import { toast } from "react-toastify";
+import { Disclosure } from "@headlessui/react";
+import { ChevronUpIcon } from "@heroicons/react/20/solid";
 
 const images = [
   {
@@ -43,6 +45,17 @@ const images = [
   },
 ];
 
+const importantText = `
+1. To be eligible for rewards, you must hold your NFT for at least 20 days.
+
+2. Once the bonus rewards system is activated, it will repeat every 90 days.
+
+3. If you are eligible for rewards, you can claim it by clicking the "Claim Bonus" button in the "Account" section.
+
+4. If you are eligible for rewards, you must claim it before the next payout date. Otherwise, you will lose your rewards.
+
+5. Expanding on the previous point, you are eligible for only one payout. If you fail to claim your reward within the 90-day period, you will lose your rewards but will be eligible for the next payout.`;
+
 function Account() {
   const { account, web3api, NFTContract } = useModal();
   const [userBalance, setUserBalance] = useState();
@@ -53,6 +66,8 @@ function Account() {
   const [bonusPayoutDate, setBonusPayoutDate] = useState();
   const [totalBonusClaimed, setTotalBonusClaimed] = useState(0);
   const [userBonus, setUserBonus] = useState(0);
+  // const [lastBonusClaim, setLastBonusClaim] = useState(0);
+  const [payoutCycleTime, setPayoutCycleTime] = useState(0);
 
   useEffect(() => {
     // let account = ["0x4926eF65A449B95C04ef590EAc68eaed36Df40F1"];
@@ -92,36 +107,48 @@ function Account() {
             setUserBonus(0);
           }
         });
-      readOnlyContract.methods
-        .bonusActive()
-        .call()
-        .then((res) => {
-          setBonusActive(res);
-        });
-      readOnlyContract.methods
-        .bonusPayoutDate()
-        .call()
-        .then((res) => {
-          const date = new Date(res * 1000);
-          const formattedDate = date.toLocaleString(undefined, {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-          });
-          setBonusPayoutDate(formattedDate);
-        });
-      readOnlyContract.methods
-        .bonusPayoutAmount()
-        .call()
-        .then((res) => {
-          setPricePerEligibleToken(res);
-        });
     }
   }, [account]);
+
+  // use effect to set interval to update bonus payout date after every bonus payout cycle time
+  // however, for first set interval, it should check how many seconds are left for next payout
+  // and then set interval for that time
+  // this is to ensure that the payout date is updated at the correct time
+  // useEffect(() => {
+
+  // }, [bonusActive, payoutCycleTime, bonusPayoutDate]);
+
+  useEffect(() => {
+    const fetchPageData = async () => {
+      const isBonusActive = await readOnlyContract.methods.bonusActive().call();
+      setBonusActive(isBonusActive);
+      let payoutCycleTime = await readOnlyContract.methods
+        .BONUS_PAYOUT_CYCLE()
+        .call();
+      console.log(payoutCycleTime);
+      let bonusPayoutDate = isBonusActive
+        ? await readOnlyContract.methods.latestCycle().call()
+        : "-";
+      if (isBonusActive) {
+        let date = new Date(bonusPayoutDate * 1000);
+        const currentDate = new Date();
+
+        while (date < currentDate) {
+          date = new Date(date.getTime() + parseInt(payoutCycleTime) * 1000);
+        }
+
+        const formattedDate = date.toLocaleString();
+        setBonusPayoutDate(formattedDate);
+      }
+      setPayoutCycleTime(parseInt(payoutCycleTime));
+      setPricePerEligibleToken(
+        await readOnlyContract.methods.bonusPayoutAmount().call()
+      );
+    };
+
+    fetchPageData();
+  }, []);
+
   const handleClaimBonus = async () => {
     if (!account) {
       toast.error("Please connect your wallet to claim bonus.");
@@ -132,7 +159,7 @@ function Account() {
       toast.error("You have no bonus to claim.");
       return;
     }
-
+    toast.dismiss();
     const loadingToast = toast.loading("Claiming in progress...");
 
     try {
@@ -140,9 +167,10 @@ function Account() {
         .claimBonus()
         .estimateGas({ from: account[0] })
         .catch((error) => {
+          console.log(error);
           error.message =
             "There was an error claiming your bonus. Please try again.";
-          toast.dismiss(loadingToast);
+          toast.dismiss();
           toast.error(error.message);
         });
       const gasPrice = await web3api.eth.getGasPrice();
@@ -155,30 +183,44 @@ function Account() {
           gasPrice: gasPrice,
         })
         .on("receipt", (receipt) => {
-          toast.dismiss(loadingToast);
+          toast.dismiss();
+          console.log("here");
           toast.success("Bonus claimed successfully!");
-          setTotalBonusClaimed(userBonus);
+          // setTotalBonusClaimed(
+          //   parseInt(userBonus) + parseInt(totalBonusClaimed)
+          // );
+          setTotalBonusClaimed((t) => parseInt(t) + parseInt(userBonus));
           setUserBonus(0);
-          readOnlyContract.methods
-            .bonusPayoutDate()
-            .call()
-            .then((res) => {
-              setBonusPayoutDate(
-                new Date(res * 1000)
-                  .toISOString()
-                  .slice(0, 19)
-                  .replace("T", " ")
-              );
-            });
+          // readOnlyContract.methods
+          //   .bonusPayoutDate()
+          //   .call()
+          //   .then((res) => {
+          //     const date = new Date(res * 1000);
+          //     const formattedDate = date.toLocaleString(undefined, {
+          //       day: "2-digit",
+          //       month: "2-digit",
+          //       year: "numeric",
+          //       hour: "2-digit",
+          //       minute: "2-digit",
+          //       second: "2-digit",
+          //       timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          //     });
+          //     setBonusPayoutDate(formattedDate);
+          //   });
+          setUserEligibleTokens(["0", "0", "0", "0"]);
         })
         .on("error", (error) => {
+          console.log(error);
           error.message =
             "There was an error claiming your bonus. Please try again.";
-          toast.dismiss(loadingToast);
+          toast.dismiss();
           toast.error(error.message);
         });
     } catch (err) {
       console.error(err.message);
+      err.message = "There was an error claiming your bonus. Please try again.";
+      toast.dismiss();
+      toast.error(err.message);
     }
   };
 
@@ -220,7 +262,7 @@ function Account() {
       <div className="mt-10" key={34985}>
         <p className="mb-4 text-xl text-white">{`Bonus Per NFT: ${pricePerEligibleToken} USD`}</p>
         <p className="mb-4 text-xl text-white">
-          {`Estimated Next Bonus Payout: ${userBonus} USD`}
+          {`Bonus Payout Available: ${userBonus} USD`}
         </p>
         <p className="mb-4 text-xl text-white">{`Total Bonus Earned: ${totalBonusClaimed} USD`}</p>
         <p className="text-xl text-white">
@@ -234,6 +276,42 @@ function Account() {
         >
           Claim Bonus
         </button>
+      </div>
+      <div>
+        <div className="w-full px-4 pt-6">
+          <div className="w-full p-2 mx-auto rounded-2xl">
+            <Disclosure>
+              {({ open }) => (
+                <>
+                  <Disclosure.Button className="flex justify-center w-3/5 px-4 py-2 mx-auto text-sm font-medium text-left bg-white rounded-lg hover:bg-slate-300 focus:outline-none">
+                    <span className="text-center text-black">
+                      Important Information regarding bonus rewards
+                    </span>
+                    <ChevronUpIcon
+                      className={`${
+                        open ? "rotate-180 transform" : ""
+                      } h-5 w-5 text-black`}
+                    />
+                  </Disclosure.Button>
+                  <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-white">
+                    <p
+                      className="flex justify-center mx-auto"
+                      style={{
+                        whiteSpace: "pre-wrap",
+                        fontSize: "14px",
+                        lineHeight: "1.8em",
+                        letterSpacing: "normal",
+                        maxWidth: "60%",
+                      }}
+                    >
+                      {importantText}
+                    </p>
+                  </Disclosure.Panel>
+                </>
+              )}
+            </Disclosure>
+          </div>
+        </div>
       </div>
     </div>
   );

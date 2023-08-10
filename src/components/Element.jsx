@@ -2,7 +2,7 @@ import React from "react";
 
 const Element = ({ isLeft, title, text, img, middleImg }) => {
   return (
-    <div className="relative mx-auto mt-2 mb-2 philospohy">
+    <div className="relative mx-auto philospohy">
       <div className="grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-none">
         {isLeft ? (
           <>
@@ -66,7 +66,7 @@ const Element = ({ isLeft, title, text, img, middleImg }) => {
                 autoPlay
                 muted
                 loop
-                src={`${img}.mp4`}
+                src={`${img}.mp44`}
               />
             </div>
           </>
@@ -89,7 +89,7 @@ const Element = ({ isLeft, title, text, img, middleImg }) => {
                 autoPlay
                 muted
                 loop
-                src={`${img}.mp4`}
+                src={`${img}.mp44`}
               />
             </div>
             <div className="grid mt-20 element-text-right mb-28">

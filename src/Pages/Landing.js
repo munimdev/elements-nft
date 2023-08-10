@@ -3,19 +3,22 @@ import Element from "../components/Element";
 import "../App.css";
 
 const welcomeText = `
-Elements_nft is a unique collections of 4 series NFTs which each of serie have 1111 pcs NFT bonus cards  representing 4 elements same as a basic components of this world.
+Introducing Elements_nft, a captivating collection of NFTs that celebrates the fundamental elements shaping our world: Air, Water, Fire, and Earth. Imagine immersing yourself in a digital realm where each series boasts 1111 exquisite NFT bonus cards, meticulously crafted to embody the essence of these elemental forces.
 
-The world could not function in the perfect without Air, Water, Fire and Earth.
+In this ever-evolving digital era, it is imperative that we redirect our focus to the planet Earth and deepen our connection with its core elements. As the world embraces the boundless possibilities of the digital realm, let us remember the irreplaceable role played by Air, Water, Fire, and Earth in sustaining life as we know it.
 
-As the world becomes more and more digital it is time to start more caring about the planet Earth based on these 4 elements.
+Join us on an enchanting journey where art and technology converge to foster a newfound appreciation for our planet's delicate balance. Through stunning visual representations and thought-provoking symbolism, these NFTs serve as reminders of the profound interdependence between humanity and the natural world.
+
+With every pixel and brushstroke, Elements_nft beckons you to recognize the importance of environmental stewardship. Let us unite in our shared responsibility to safeguard the very elements that give us life. Together, we can leverage the power of the digital landscape to inspire collective action and forge a brighter, sustainable future for our beloved Earth.
+
+Embark on this extraordinary voyage with Elements_nft, where art, technology, and environmental consciousness intertwine, creating a mesmerizing tapestry that celebrates the beauty and fragility of our world.
 `;
 
-const philosophyText = `
-Across the world and all cultures there exists symbolism related to 4 nature elements. Air, Water, Fire and Earth.
+const philosophyText = `The symbolism surrounding the four elements of nature—Air, Water, Fire, and Earth—resonates across all cultures worldwide.
 
-Without these the world could not exist in the perfect.
+These elements hold immense significance, for their absence would disrupt the world's delicate balance of perfection.
 
-You can imagine the circle. If we start with the Wind (Air) - it raises the clouds. Clouds are created by Water that nurtures down the Earth. This allows to grow the vegetation and the wood that kindles the fire.
+Imagine a mesmerizing circle unfolding before your eyes. Let's begin at the ethereal realm of Wind, where its gentle touch lifts and sculpts majestic clouds. These clouds, born from the embrace of Water, shower their nurturing essence upon the Earth below. This harmonious cycle enables the sprouting of vibrant vegetation and the growth of wood, essential for kindling the transformative power of Fire.
 `;
 
 const philosophySubText = `
@@ -23,57 +26,62 @@ These four elements we can find in the external material world but also believe 
 `;
 
 const introductionText = `
-This project is unique.
+As we marvel at these elements in the external world, it becomes clear that they are intricately intertwined with our very being. Deeply ingrained within us, they govern and shape our individuality, evocative moods, extraordinary abilities, and profound emotions. We are, in essence, a reflection of the interplay between these four elemental forces.
 
-As there will not be more basic elements in the world, in this collection there will not be more than 4444 NFT bonus cards.
+Prepare to embark on a truly exceptional journey with this one-of-a-kind project.
 
-The holders of these bonus cards would like to take care of our planet Earth based on the 4 elements and by this way they will be part of the community which know how much important the nature is.
+This collection stands out as a rare gem in a world where the elements form the very foundation of existence. Limited to a remarkable 4444 NFT bonus card, it encapsulates the essence of these elemental forces.
+
+What sets this project apart is its profound commitment to environmental stewardship. The holders of these coveted bonus cards share a deep desire to nurture and protect our precious planet Earth. By aligning themselves with this community, they become an integral part of a collective that understands and cherishes the paramount importance of nature.
+
+Join the ranks of those who recognize the beauty and significance of the four elements, and together, let us strive to create a sustainable future for generations to come.
 `;
 
 const elementAir = `
-The symbol of creativity, strategy, knowledge, communication and perception. Also vision and innovation.
+Behold the emblem of boundless creativity, strategic prowess, profound wisdom, effective communication, and heightened perception. It is the very essence of vision and innovation.
 
-The element of air is about life itself because all living creatures, animals and plants require air to live.  This element is mois, warm and provide the energy for mind and body.
+The element of air breathes life into existence itself, for every living creature, be it animal or plant, relies on its nurturing embrace. This ethereal force imbues the world with moisture, warmth, and the vital energy that invigorates both mind and body.
 
-Typically depicted colours are white, grey, yellow and blue.
+When envisioning the element of air, one often visualizes a harmonious palette of colors. The ethereal hues of white, grey, yellow, and blue encapsulate its essence, evoking a sense of tranquility and serenity.
 
-Air sign: ♊Gemini, ♎Libra, ♒Aquarius.
+The air sign bears the emblem of intellect and adaptability within the celestial realm. ♊Gemini, ♎Libra, and ♒Aquarius, representing this elemental force, embrace the winds of change and wield the power of innovation with grace and agility.
 `;
 
 const elementWater = `
-The symbol of change, dreaming, intuition, rebirth, clarity and fertility. Also emotions and care.
+Behold the profound symbol of transformation, ethereal dreams, intuitive wisdom, rejuvenation, crystal-clear clarity, and abundant fertility. It is the essence of deep emotions and nurturing care.
 
-Water is smooth and calm element also it is wet and cool and it represent mind and body. This element can be found in rivers, lakes, seas, oceans and springs. Without water there would not be possible life on earth.
+Water, the element of serenity and calmness, flows gracefully through existence. It is both refreshing and cool, encapsulating the essence of tranquility, while nurturing both the mind and body. From majestic rivers to serene lakes, vast seas to expansive oceans, and enchanting springs, water pervades the earthly realm, enabling and sustaining the very essence of life.
 
-Typically depicted colours are black, blue, grey and silver.
+Immerse yourself in a palette of evocative colors that reflect the spirit of water. Shades of black, blue, grey, and silver paint a mesmerizing canvas that captures the fluidity and depth of this elemental force.
 
-Water sign: ♋Cancer, ♏Scorpio, ♓Pisces.
+Within the realm of the zodiac, the water sign embodies emotional depth and intuitive prowess. ♋Cancer, ♏Scorpio, and ♓Pisces, bearers of the water sign, dance with the tides of change and navigate the realms of empathy and compassion with remarkable grace.
 `;
 
 const elementFire = `
-The symbol of energy, love, desire, power, assertiveness and anger. Also challenge, goal and motivation.
+Behold the captivating symbol of unbridled energy, passionate love, unwavering desire, indomitable power, assertiveness, and fiery anger. It represents the essence of challenge, ambition, and relentless motivation.
 
-Fire is warm and dry element. Predominantly associated with the sun which gives off light and protect all living creatures from the shadows.
+Fire, the element that radiates warmth and exudes a dry heat, is intrinsically linked to the celestial sun. Like a celestial guardian, the sun illuminates our world, banishing shadows and providing protection to all living creatures.
 
-Typically depicted colours are orange, red and yellow.
+Vivid and evocative colors manifest in depictions of fire, with hues of orange, red, and yellow igniting the senses. These fiery shades encapsulate the intensity and vibrancy of this elemental force, stirring the soul with their brilliance.
 
-Fire Signs: ♈Aries, ♌Leo, ♐Sagittarius.
+Embracing the realm of the zodiac, fire signs embody the unyielding spirit of adventure and unapologetic self-expression. ♈Aries, ♌Leo, and ♐Sagittarius, bearers of the fire sign, blaze a trail of passion, radiating confidence, and unrelenting determination in their pursuit of greatness.
 `;
 
 const elementEarth = `
-The symbol of security, health, home, stability, nourishment and fertility. Also sureness and order.
+Witness the profound embodiment of security, vitality, sanctuary, unwavering stability, nourishing sustenance, and abundant fertility. It carries the essence of unwavering assurance and harmonious order.
 
-This element is the most materially grounded and it is cool and dry. It provides comfortable living space for all animals and plants. It can be found in mountains, hills and fields. This element is providing energy for all living creatures.
+The element of Earth, firmly rooted in the material realm, exudes a cool and dry nature. It serves as the very foundation of existence, providing a comforting haven for all creatures, both animal and plant alike. Mountains, hills, and fields bear the imprint of Earth, offering a harmonious dwelling place and serving as a wellspring of energy for all living beings.
 
-Typically depicted colours are brown, green and yellow.
+Delve into a captivating palette of colors that artistically captures the essence of Earth. Rich shades of brown, vibrant greens and warm yellows paint a vivid canvas, evoking a sense of abundance, growth, and natural splendor.
 
-Earth sign: ♉Taurus, ♍Virgo, ♑Capricorn.
+In the realm of the zodiac, Earth signs symbolize practicality and unwavering resilience. ♉Taurus, ♍Virgo, and ♑Capricorn, bearers of the Earth sign, embody steadfastness and forge a deep connection to the tangible world. Rooted in stability, they epitomize the virtues of patience, industriousness, and a profound understanding of the importance of balance.
+
 `;
 
 const whyThisProjectText = `
-Every year the community will pick up some project focused on recovering of nature and this project will support.
+Each year, our dedicated community selects a nature-focused endeavor aimed at restoring and revitalizing our precious environment. By participating in this project, you become a crucial supporter of these noble causes.
 
-Also there will be monthly bonuses (cummulated and sent once per Q) for all members of this community with ❤️ on right place.
+Additionally, as a valued member of our community, you can claim quarterly bonus available for holders NFT cards after login in their account. We wholeheartedly believe in recognizing and appreciating our members who hold a genuine passion for making a positive impact on the world.
 `;
 
 function Landing() {
@@ -82,7 +90,6 @@ function Landing() {
 
   const handleScroll = () => {
     const position = window.scrollY;
-    console.log(position);
     setScrollPosition(position);
   };
 
@@ -264,7 +271,7 @@ function Landing() {
           </p>
         </div>
       </div>
-      <div className="bg-black pt-14 pb-28">
+      <div className="bg-black pt-28 pb-28">
         <h2 className="text-2xl font-bold">LETS EXPLORE THE ELEMENTS</h2>
       </div>
       <Element
@@ -304,7 +311,7 @@ function Landing() {
             }}
           >
             {
-              "The key to an existence is to instigate balance in the universe and within ourselves."
+              "Unlocking the secret to a harmonious existence lies in cultivating equilibrium, both in the vast universe and within the depths of our own being."
             }
           </p>
         </div>

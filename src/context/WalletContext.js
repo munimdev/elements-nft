@@ -6,7 +6,6 @@ import {
   disconnectWallet,
 } from "../config";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Web3 from "web3";
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider"; // deprecated
@@ -23,9 +22,9 @@ const WalletContext = ({ children }) => {
       // package: EthereumProvider, // required
       options: {
         rpc: {
-          1: "https://mainnet.infura.io/v3/" + INFURA_ID,
-          5: "https://rpc.ankr.com/eth_goerli",
-          137: "https://matic-mainnet.chainstacklabs.com",
+          1: "https://eth-mainnet.g.alchemy.com/v2/kzFIScr8pJpjPZytdNDACWPeFfC0PSnA",
+          11155111:
+            "https://eth-sepolia.g.alchemy.com/v2/N857SHVlEgSANILDRZWo5aRlK5CH-PHM",
         },
         infuraId: INFURA_ID, // required
         chainId: activeChain,
@@ -108,7 +107,7 @@ const WalletContext = ({ children }) => {
   const chainChangedHandler = () => {
     window.ethereum.request({
       method: "wallet_switchEthereumChain",
-      params: [{ chainId: `0x${activeChain}` }],
+      params: [{ chainId: `0x${activeChain.toString(16)}` }],
     });
   };
 

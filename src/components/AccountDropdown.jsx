@@ -1,13 +1,10 @@
-import { useState, useEffect } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import { ChevronDownIcon, UserIcon } from "@heroicons/react/20/solid";
-import { Fragment } from "react";
+import { Popover } from "@headlessui/react";
+import { UserIcon } from "@heroicons/react/20/solid";
 import { useModal } from "../context/ModalContext";
 import { Link } from "react-router-dom";
 
 export default function AccountDropdown() {
   const { account, disconnectWalletFromApp } = useModal();
-  const [username, setUsername] = useState("");
 
   return (
     <Popover className="relative">
@@ -23,7 +20,7 @@ export default function AccountDropdown() {
         </div>
       </Popover.Button>
 
-      <Popover.Panel className="absolute z-10 absolute z-10 w-screen max-w-[260px] px-4 mt-3 -right-10 sm:right-0 sm:px-0 opacity-100 translate-y-0">
+      <Popover.Panel className="absolute z-10 w-screen max-w-[260px] px-4 mt-3 -right-10 sm:right-0 sm:px-0 opacity-100 translate-y-0">
         <div class="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5">
           <div class="relative grid grid-cols-1 gap-6 bg-neutral-900 py-7 px-6">
             <div class="flex items-center space-x-3">
@@ -202,38 +199,5 @@ export default function AccountDropdown() {
         <img src="/solutions.jpg" alt="" /> */}
       </Popover.Panel>
     </Popover>
-  );
-}
-
-function IconOne() {
-  return (
-    <svg
-      width="48"
-      height="48"
-      viewBox="0 0 48 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="48" height="48" rx="8" fill="#FFEDD5" />
-      <path
-        d="M24 11L35.2583 17.5V30.5L24 37L12.7417 30.5V17.5L24 11Z"
-        stroke="#FB923C"
-        strokeWidth="2"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M16.7417 19.8094V28.1906L24 32.3812L31.2584 28.1906V19.8094L24 15.6188L16.7417 19.8094Z"
-        stroke="#FDBA74"
-        strokeWidth="2"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M20.7417 22.1196V25.882L24 27.7632L27.2584 25.882V22.1196L24 20.2384L20.7417 22.1196Z"
-        stroke="#FDBA74"
-        strokeWidth="2"
-      />
-    </svg>
   );
 }

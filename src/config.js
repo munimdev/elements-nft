@@ -1,5 +1,4 @@
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Web3 from "web3";
 
 // disconnect metamask wallet
@@ -8,10 +7,29 @@ export const disconnectWallet = () => {
   toast.info("Wallet disconnected");
 };
 
+export const activeChain = 11155111;
+export const chainData = {
+  1: {
+    rpc: "https://eth-mainnet.g.alchemy.com/v2/kzFIScr8pJpjPZytdNDACWPeFfC0PSnA",
+    oracle: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+    chainId: 1,
+  },
+  5: {
+    rpc: "https://rpc.ankr.com/eth_goerli",
+    oracle: "0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e",
+    chainId: 5,
+  },
+  11155111: {
+    rpc: "https://eth-sepolia.g.alchemy.com/v2/N857SHVlEgSANILDRZWo5aRlK5CH-PHM",
+    oracle: "0x694AA1769357215DE4FAC081bf1f309aDC325306",
+    chainId: 11155111,
+  },
+};
 // export const web3 = new Web3("https://rpc.ankr.com/eth");
-export const web3 = new Web3("https://rpc.ankr.com/eth_goerli");
+// export const web3 = new Web3("https://rpc.ankr.com/eth_goerli");
+export const web3 = new Web3(chainData[activeChain].rpc);
 
-export const NFTAddress = "0xf0e82F4BBC3772F3c7B1296CF611d0F750fe9c73";
+export const NFTAddress = "0x672A4F2F3e99De15Dbc94Fe45657fa04Af19C890";
 export const NFTABI = [
   {
     inputs: [],
@@ -411,19 +429,6 @@ export const NFTABI = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "bonusPayoutDate",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [
       {
         internalType: "address",
@@ -496,7 +501,7 @@ export const NFTABI = [
   },
   {
     inputs: [],
-    name: "getBlockTimestamp",
+    name: "firstPayoutDate",
     outputs: [
       {
         internalType: "uint256",
@@ -659,12 +664,12 @@ export const NFTABI = [
   },
   {
     inputs: [],
-    name: "name",
+    name: "latestCycle",
     outputs: [
       {
-        internalType: "string",
+        internalType: "uint256",
         name: "",
-        type: "string",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -672,12 +677,12 @@ export const NFTABI = [
   },
   {
     inputs: [],
-    name: "nextBonusDate",
+    name: "name",
     outputs: [
       {
-        internalType: "uint256",
+        internalType: "string",
         name: "",
-        type: "uint256",
+        type: "string",
       },
     ],
     stateMutability: "view",
@@ -929,12 +934,8 @@ export const NFTABI = [
   },
 ];
 
-export const activeChain = 5;
 // export const oracleAddress = "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419";
-export const oracleAddress =
-  activeChain === 1
-    ? "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419"
-    : "0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e";
+export const oracleAddress = chainData[activeChain].oracle;
 export const oracleABI = [
   {
     inputs: [],
@@ -957,6 +958,7 @@ export const oracleContract = new web3.eth.Contract(oracleABI, oracleAddress);
 export const chainNames = {
   1: "Mainnet",
   5: "Goerli",
+  11155111: "Sepolia",
 };
 
 export const isWalletConnected = () => {
