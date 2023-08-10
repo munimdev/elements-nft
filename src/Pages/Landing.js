@@ -145,8 +145,8 @@ function Landing() {
           </h1>
         </div>
       </div>
-      <div className="container mx-auto content pt-14 pb-28">
-        <div className="mx-auto welcome" style={{ width: "55%" }}>
+      <div className="container mx-auto content pt-14 pb-14 md:pb-28">
+        <div className="mx-auto welcome md:w-[55%]" >
           <h1 className="text-3xl font-bold">Welcome to our website!</h1>
           <div>
             <p
@@ -163,9 +163,9 @@ function Landing() {
         </div>
       </div>
       <div className="mx-auto philospohy pb-28">
-        <div className="grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-none">
+        <div className="md:grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-none">
           <div
-            className="grid row-span-1 mt-20 ml-48 philosophy-text mb-28 lg:col-span-1"
+            className="grid row-span-1 mt-20 md:ml-48 philosophy-text mb-28 lg:col-span-1"
             style={{
               width: "50%",
             }}
@@ -186,9 +186,9 @@ function Landing() {
             <div className="b-top"></div>
 
             <div
-              className="b-left-small b-left-big"
+              className="b-left-small pl-[15%] b-left-big"
               style={{
-                paddingLeft: "15%",
+                // paddingLeft: "15%",
                 // paddingRight: "12.5%",
                 // marginLeft: "20%",
                 // marginRight: "12.5%",
@@ -209,7 +209,7 @@ function Landing() {
             <div className="b-bottom"></div>
           </div>
           <div
-            className="philosophy-image md:col-span-1 sm:row-span-1"
+            className="philosophy-image md:col-span-1 sm:row-span-1 h-[400px] md:h-auto md:min-h-max"
             style={{
               backgroundImage: `url(assets/philosophy.jpg)`,
               backgroundSize: "cover",
@@ -217,15 +217,15 @@ function Landing() {
               backgroundRepeat: "no-repeat",
               // width: "100%",
               // minWidth: "100%",
-              height: "auto",
-              minHeight: "100%",
+              // height: "auto",
+              // minHeight: "100%",
               overflow: "hidden",
             }}
           ></div>
         </div>
       </div>
       <div>
-        <div className="container mx-auto pb-28" style={{ width: "57.5%" }}>
+        <div className="container mx-auto pb-28 w-full md:w-[57%]">
           <p
             style={{
               whiteSpace: "pre-wrap",
@@ -247,7 +247,7 @@ function Landing() {
         }}
       >
         <h1
-          className="pt-16 pb-40 text-5xl font-bold"
+          className="pt-16 pb-10 md:pt-16 md:pb-40 text-3xl md:text-5xl font-bold"
           style={{
             color: "rgba(43,42,42,1)",
             letterSpacing: "0.195em",
@@ -256,7 +256,7 @@ function Landing() {
           LET US INTRODUCE ELEMENTS NFT
         </h1>
       </div>
-      <div className="mx-auto pt-14 pb-28" style={{ width: "57.5%" }}>
+      <div className="mx-auto pt-14 pb-28 md:w-[57%]" >
         {/* add two rows */}
         <div className="row-span-1 content">
           <p
@@ -325,7 +325,7 @@ function Landing() {
           minHeight: "100%",
         }}
       >
-        <div className="pt-16 pb-24 ml-24 px-14 why-this-wrapper content lg:w-[30%] md:w-[50%] sm:w-[80%]">
+        <div className="pt-16 pb-24 md:ml-24 px-14 why-this-wrapper content lg:w-[30%] md:w-[50%] sm:w-[80%]">
           <div className="grid mt-20 philosophy-text mb-28">
             <div>
               <h1
