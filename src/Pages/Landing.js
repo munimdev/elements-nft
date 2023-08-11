@@ -256,7 +256,7 @@ function Landing() {
           LET US INTRODUCE ELEMENTS NFT
         </h1>
       </div>
-      <div className="mx-auto pt-14 pb-28 md:w-[57%]" >
+      <div className="mx-auto px-4 md:px-0 pt-14 pb-28 md:w-[57%]" >
         {/* add two rows */}
         <div className="row-span-1 content">
           <p
@@ -318,14 +318,14 @@ function Landing() {
       </div>
       {/* Create a div with background 'project.jpg' */}
       <div
-        className="mx-auto pt-14 pb-28"
+        className="mx-auto pt-14 pb-28 object-cover h-auto md:min-w-full bg_size"
         style={{
           backgroundImage: `url(assets/project.jpg)`,
-          backgroundSize: "100% 100%",
-          minHeight: "100%",
+      
+      
         }}
       >
-        <div className="pt-16 pb-24 md:ml-24 px-14 why-this-wrapper content lg:w-[30%] md:w-[50%] sm:w-[80%]">
+        <div className="pt-16 pb-24 md:ml-24 px-10 md:px-14 why-this-wrapper content mx-auto lg:w-[35%] md:w-[60%] sm:w-[80%]">
           <div className="grid mt-20 philosophy-text mb-28">
             <div>
               <h1
@@ -341,9 +341,9 @@ function Landing() {
             </div>
 
             <div
-              className="why-left-small b-left-big"
+              className="why-left-small b-left-big pl-[15%]"
               style={{
-                paddingLeft: "15%",
+     
                 // paddingRight: "12.5%",
                 // marginLeft: "20%",
                 // marginRight: "12.5%",

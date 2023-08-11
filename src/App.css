@@ -331,6 +331,10 @@
   color: white;
 }
 
+.bg_size {
+  background-size: 100% 100% ;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -343,3 +347,14 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 1024px) {
+  .content {
+    background-color:  #2b2a2a61 ;
+    color: white;
+  }
+
+  .bg_size {
+    background-size: cover ;
+  }
+ }

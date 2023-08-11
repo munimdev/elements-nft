@@ -3,15 +3,13 @@ import React from "react";
 const Element = ({ isLeft, title, text, img, middleImg }) => {
   return (
     <div className="relative mx-auto philospohy">
-      <div className="grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-none">
+      <div className="md:grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-none">
         {isLeft ? (
           <>
             <div className="grid mt-20 element-text-right mb-28">
               <div
-                className="lg:justify-self-start justify-self-center"
-                style={{
-                  width: "60%",
-                }}
+                className="lg:justify-self-start justify-self-center w-full md:w-[60%]"
+              
               >
                 <div>
                   <h1
@@ -50,14 +48,12 @@ const Element = ({ isLeft, title, text, img, middleImg }) => {
               </div>
             </div>
             <div
-              className="relative philosophy-image"
+              className="relative philosophy-image bg-contain md:bg-cover md:h-auto h-[380px] md:min-h-[100%]"
               style={{
                 backgroundImage: `url(${img}.jpg)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                height: "auto",
-                minHeight: "100%",
+                backgroundRepeat: "no-repeat",      
                 overflow: "hidden",
               }}
             >
@@ -94,10 +90,8 @@ const Element = ({ isLeft, title, text, img, middleImg }) => {
             </div>
             <div className="grid mt-20 element-text-right mb-28">
               <div
-                className="pt-10 lg:justify-self-end lg:pt-0 justify-self-center"
-                style={{
-                  width: "60%",
-                }}
+                className="pt-10 lg:justify-self-end lg:pt-0 justify-self-center w-full md:w-[60%]"
+               
               >
                 <div>
                   <h1
