@@ -316,15 +316,15 @@ function Landing() {
       </div>
       {/* Create a div with background 'project.jpg' */}
       <div
-        className="mx-auto pt-14 pb-28 object-cover h-auto md:min-w-full bg_size"
+        className="mx-auto pt-14 md:pb-10 lg:pb-28 object-cover h-auto md:min-w-full bg_size"
         style={{
           backgroundImage: `url(assets/project.jpg)`,
       
       
         }}
       >
-        <div className="pt-16 pb-24 md:ml-24 px-10 md:px-14 why-this-wrapper content mx-auto lg:w-[35%] md:w-[70%]  sm:w-[80%]">
-          <div className="grid mt-20 philosophy-text mb-28">
+        <div className="pt-16 lg:pt-16 pb-16 lg:pb-24 md:ml-24 px-6 md:px-14 why-this-wrapper content mx-auto lg:w-[35%] md:w-[70%]  sm:w-[80%]">
+          <div className="grid mt-6 lg:mt-20 philosophy-text mb-6 lg:mb-28">
             <div>
               <h1
                 className="text-2xl font-bold"
@@ -348,7 +348,7 @@ function Landing() {
               }}
             >
               <p
-                className="py-16"
+                className="py-6 lg:py-16"
                 style={{
                   whiteSpace: "pre-wrap",
                   fontSize: "14px",
