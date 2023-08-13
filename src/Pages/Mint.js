@@ -178,7 +178,7 @@ function Mint() {
           <video autoPlay loop muted src="/assets/mint-video.mp4" />
         </div>
       </div> */}
-      <div className="container w-3/4 mx-auto lg:w-1/2 mint-right">
+      <div className="container w-[95%] md:w-3/4 mx-auto lg:w-1/2 mint-right">
         <h1 className="mb-5 text-2xl mint-header">
           Mint {images[slideIndex.current - 1].an ? "an" : "a"}{" "}
           <span className={`mint-element `}>{`${
@@ -232,7 +232,7 @@ function Mint() {
             +
           </button>
         </div>
-        <button onClick={mintNFT} className="mt-8 mint__btn">
+        <button onClick={mintNFT} className="mt-6 md:mt-8 mint__btn">
           Mint Now
         </button>
       </div>

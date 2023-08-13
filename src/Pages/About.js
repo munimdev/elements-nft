@@ -41,49 +41,49 @@ const About = () => {
   return (
     <>
       <p
-        className="flex justify-center mx-auto mt-10 underline"
+        className="flex justify-center mx-auto mt-12 underline px-6 md:px-0 md:max-w-[60%]"
         style={{
           whiteSpace: "pre-wrap",
           fontSize: "18px",
           lineHeight: "1.8em",
           letterSpacing: "normal",
-          maxWidth: "60%",
+        
         }}
       >
         {aboutTextHeading}
       </p>
       <p
-        className="flex justify-center mx-auto"
+        className="flex justify-center mx-auto px-6 md:px-0 md:max-w-[60%]"
         style={{
           whiteSpace: "pre-wrap",
           fontSize: "14px",
           lineHeight: "1.8em",
           letterSpacing: "normal",
-          maxWidth: "60%",
+ 
         }}
       >
         {aboutText}
       </p>
       <p
-        className="flex justify-center mx-auto mt-10 underline"
+        className="flex justify-center mx-auto mt-10 underline px-5 md:px-0 md:max-w-[60%]"
         style={{
           whiteSpace: "pre-wrap",
           fontSize: "18px",
           lineHeight: "1.8em",
           letterSpacing: "normal",
-          maxWidth: "60%",
+         
         }}
       >
         {importantTextHeading}
       </p>
       <p
-        className="flex justify-center mx-auto"
+        className="flex justify-center mx-auto px-6 md:px-0 md:max-w-[60%] pb-6"
         style={{
           whiteSpace: "pre-wrap",
           fontSize: "14px",
           lineHeight: "1.8em",
           letterSpacing: "normal",
-          maxWidth: "60%",
+        
         }}
       >
         {importantText}

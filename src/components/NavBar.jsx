@@ -129,7 +129,7 @@ function Navbar({ transparent = false }) {
             <Popover.Group as="nav" className="hidden space-x-0 md:flex">
               <Link
                 to="/"
-                className={`py-2 px-4 xl:px-5 inline-flex items-center rounded-full ${
+                className={`py-2 px-2 md:px-4 xl:px-5 inline-flex items-center rounded-full ${
                   dark
                     ? "text-black hover:bg-neutral-100"
                     : "text-white hover:text-black  hover:bg-neutral-100"
@@ -140,7 +140,7 @@ function Navbar({ transparent = false }) {
               </Link>
               <Link
                 to="/mint"
-                className={`py-2 px-4 xl:px-5 inline-flex items-center rounded-full ${
+                className={`py-2 px-2 lg:px-4 xl:px-5 inline-flex items-center rounded-full ${
                   dark
                     ? "text-black hover:bg-neutral-100"
                     : "text-white hover:text-black  hover:bg-neutral-100"
@@ -152,7 +152,7 @@ function Navbar({ transparent = false }) {
 
               <Link
                 to="/info"
-                className={`py-2 px-4 xl:px-5 inline-flex items-center rounded-full ${
+                className={`py-2 px-2 lg:px-4 xl:px-5 inline-flex items-center rounded-full ${
                   dark
                     ? "text-black hover:bg-neutral-100"
                     : "text-white hover:text-black  hover:bg-neutral-100"
@@ -163,7 +163,7 @@ function Navbar({ transparent = false }) {
               {account != undefined ? (
                 <Link
                   to="/account"
-                  className={`py-2 px-4 xl:px-5 inline-flex items-center rounded-full ${
+                  className={`py-2 px-2 lg:px-4 xl:px-5 inline-flex items-center rounded-full ${
                     dark
                       ? "text-black hover:bg-neutral-100"
                       : "text-white hover:text-black  hover:bg-neutral-100"
@@ -182,7 +182,7 @@ function Navbar({ transparent = false }) {
             </div>
 
             <div className="items-center hidden md:flex">
-              <div className="hidden h-10 mr-3 border-l sm:block border-neutral-300 dark:border-neutral-6000"></div>
+              <div className="hidden h-10 lg:mr-3 border-l sm:block border-neutral-300 dark:border-neutral-6000"></div>
               {account !== undefined ? (
                 <>
                   <button

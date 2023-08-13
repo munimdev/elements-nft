@@ -3,17 +3,17 @@ import React from "react";
 const Element = ({ isLeft, title, text, img, middleImg }) => {
   return (
     <div className="relative mx-auto philospohy">
-      <div className="md:grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-none">
+      <div className="lg:grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-none">
         {isLeft ? (
           <>
             <div className="grid mt-20 element-text-right mb-28">
               <div
-                className="lg:justify-self-start justify-self-center w-full md:w-[60%]"
+                className="lg:justify-self-start justify-self-center w-full md:w-[75%] lg:w-[60%]"
               
               >
                 <div>
                   <h1
-                    className="text-2xl font-bold"
+                    className="text-2xl font-bold text-left md:text-center px-10"
                     style={{
                       letterSpacing: "0.35em",
                       fontStyle: "italic",
@@ -48,7 +48,7 @@ const Element = ({ isLeft, title, text, img, middleImg }) => {
               </div>
             </div>
             <div
-              className="relative philosophy-image bg-contain md:bg-cover md:h-auto h-[380px] md:min-h-[100%]"
+              className="relative philosophy-image bg-contain md:bg-cover h-[380px] lg:min-h-[100%] lg:h-auto"
               style={{
                 backgroundImage: `url(${img}.jpg)`,
                 backgroundSize: "cover",
@@ -69,14 +69,14 @@ const Element = ({ isLeft, title, text, img, middleImg }) => {
         ) : (
           <>
             <div
-              className="relative philosophy-image"
+              className="hidden lg:flex relative philosophy-image h-[380px] md:min-h-[100%] md:h-auto"
               style={{
                 backgroundImage: `url(${img}.jpg)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
-                height: "auto",
-                minHeight: "100%",
+
+             
                 overflow: "hidden",
               }}
             >
@@ -90,12 +90,12 @@ const Element = ({ isLeft, title, text, img, middleImg }) => {
             </div>
             <div className="grid mt-20 element-text-right mb-28">
               <div
-                className="pt-10 lg:justify-self-end lg:pt-0 justify-self-center w-full md:w-[60%]"
+                className="md:pt-10 lg:justify-self-end lg:pt-0 justify-self-center  w-full md:w-[75%] lg:w-[60%]"
                
               >
                 <div>
                   <h1
-                    className="text-2xl font-bold"
+                    className="text-2xl px-10 font-bold text-left md:text-center"
                     style={{
                       letterSpacing: "0.35em",
                       fontStyle: "italic",
@@ -128,6 +128,27 @@ const Element = ({ isLeft, title, text, img, middleImg }) => {
 
                 <div className="b-bottom"></div>
               </div>
+            </div>
+
+            <div
+              className="block lg:hidden relative philosophy-image h-[380px] lg:min-h-[100%] lg:h-auto"
+              style={{
+                backgroundImage: `url(${img}.jpg)`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+
+             
+                overflow: "hidden",
+              }}
+            >
+              <video
+                className="absolute inset-0 object-cover w-full h-full"
+                autoPlay
+                muted
+                loop
+                src={`${img}.mp44`}
+              />
             </div>
           </>
         )}

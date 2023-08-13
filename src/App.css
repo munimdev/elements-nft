@@ -357,4 +357,53 @@
   .bg_size {
     background-size: cover ;
   }
+
+
  }
+
+@media (max-width: 768px) {
+  .b-top::before {
+    content: "";
+    display: block;
+    width: 22%;
+    height: 1px;
+    border-top: 1px solid rgba(213,212,212,1);
+    position: relative;
+    left: 10%;
+    /* background-color: rgba(213,212,212,1); */
+  }
+
+  .middle-img {
+    position: absolute;
+    top: -1%;
+    right: 10%;
+  }
+
+  .b-top {
+    margin-bottom: 30px;
+  }
+  .slider {
+    height: 300px;
+  }
+  .b-left-small::after {
+    left: -21%;
+  }
+}
+
+
+@media (min-width: 600px) and (max-width: 1024px) {
+.middle-img {
+  width: 20% !important;
+}
+nav> a {
+font-size: 13px !important;
+padding: auto 0px !important;
+}
+
+.middle-img {
+  position: absolute;
+  top: -3%;
+  right: 10%;
+}
+
+}
