@@ -1,10 +1,10 @@
 import React from 'react'
 //use react icons 
-import { FaFacebook, FaTwitter, FaInstagram, FaDiscord } from 'react-icons/fa'
+import { FaTwitter, FaInstagram, FaDiscord } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <div className='px-10 text-xl py-10 flex justify-between items-center'>
+    <div className='px-10 text-xl py-10 flex flex-col md:flex-row gap-6 justify-between items-center'>
       <p className='transform transition-all ease-in-out hover:scale-125'>
       Elements NFT's
       </p>
