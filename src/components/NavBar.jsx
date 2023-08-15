@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useCallback } from "react";
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -119,6 +119,8 @@ function Navbar({ transparent = false }) {
         }
         style={{ zIndex: 100 }}
       >
+        {({ close }) => (
+          <>
         <div className="container text-white">
           <div className="flex items-center justify-between py-5 border-gray-100 md:space-x-6">
             <div className="flex items-center justify-start flex-grow space-x-0 sm:space-x-4 lg:space-x-8">
@@ -249,6 +251,11 @@ function Navbar({ transparent = false }) {
                           <Link
                             key={item.name}
                             to={item.href}
+                            onClick={
+                              ()=>
+                              close()
+
+                            }
                             className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg"
                           >
                             <span className="block w-full">{item.name}</span>
@@ -257,6 +264,12 @@ function Navbar({ transparent = false }) {
                       : notloggedin.map((item) => (
                           <Link
                             key={item.name}
+                            onClick={
+                              ()=>
+                              close()
+
+                            }
+                           
                             to={item.href}
                             className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg"
                           >
@@ -307,6 +320,8 @@ function Navbar({ transparent = false }) {
             </div>
           </Popover.Panel>
         </Transition>
+        </>
+        )}
       </Popover>
     </>
   );
