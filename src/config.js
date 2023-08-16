@@ -29,7 +29,7 @@ export const chainData = {
 // export const web3 = new Web3("https://rpc.ankr.com/eth_goerli");
 export const web3 = new Web3(chainData[activeChain].rpc);
 
-export const NFTAddress = "0x672A4F2F3e99De15Dbc94Fe45657fa04Af19C890";
+export const NFTAddress = "0xb83AB0C7Aa84263d6e8bf2Fe71ECb5b1E283A933";
 export const NFTABI = [
   {
     inputs: [],
